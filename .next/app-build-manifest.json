@@ -16,20 +16,10 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
-    "/about/page": [
+    "/api/workshop-enquiry/route": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/about/page.js"
-    ],
-    "/crocus-diaries/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/crocus-diaries/page.js"
-    ],
-    "/enquiry/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/enquiry/page.js"
+      "static/chunks/app/api/workshop-enquiry/route.js"
     ]
   }
 }

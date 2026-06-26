@@ -44,23 +44,32 @@ export default function AssessmentPage() {
   return (
     <section className="px-6 py-24">
       <div className="mx-auto max-w-3xl">
-        {/* <Reveal>
+        <Reveal>
           <p className="text-center script text-2xl text-mauve">tools for reflection</p>
           <h1 className="mt-2 text-center display text-6xl">Assessment</h1>
           <p className="mt-6 text-center text-foreground/75 leading-relaxed">
-            Assessment isn't about labels — it's a gentle invitation to understand yourself with more clarity. Choose any path below; each opens a small conversation with me.
+            Assessment isn't about labels — it's a gentle invitation to understand yourself with
+            more clarity. Choose any path below; each opens a small conversation with me.
           </p>
         </Reveal>
         <Reveal delay={0.15}>
           <Accordion type="single" collapsible className="mt-12 space-y-3">
             {items.map((item, i) => (
-              <AccordionItem key={item.t} value={`item-${i}`} className="watercolor-card border-0 px-6">
-                <AccordionTrigger className="display text-lg hover:no-underline">{item.t}</AccordionTrigger>
-                <AccordionContent className="text-foreground/70 leading-relaxed">{item.d}</AccordionContent>
+              <AccordionItem
+                key={item.t}
+                value={`item-${i}`}
+                className="watercolor-card border-0 px-6"
+              >
+                <AccordionTrigger className="display text-lg hover:no-underline">
+                  {item.t}
+                </AccordionTrigger>
+                <AccordionContent className="text-foreground/70 leading-relaxed">
+                  {item.d}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
-        </Reveal> */}
+        </Reveal>
       </div>
     </section>
   );

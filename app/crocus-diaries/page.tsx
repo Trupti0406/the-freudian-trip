@@ -58,7 +58,7 @@ const communities = [
 
 export default function DiariesPage() {
   return (
-    <div className="relative min-h-screen bg-[#E8DCB8]">
+    <div className="relative min-h-screen ">
       {/* Dear Diary — vertical left-side decoration */}
       <div className="pointer-events-none absolute left-2 top-40 hidden xl:block">
         <p
