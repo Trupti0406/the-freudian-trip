@@ -48,11 +48,11 @@ export default function AssessmentPage() {
           <p className="text-center script text-2xl text-mauve">tools for reflection</p>
           <h1 className="mt-2 text-center display text-6xl">Assessment</h1>
           <p className="mt-6 text-center text-foreground/75 leading-relaxed">
-            Assessment isn't about labels — it's a gentle invitation to understand yourself with
-            more clarity. Choose any path below; each opens a small conversation with me.
+            Assessment isn't about labels, it's a gentle invitation to understand yourself with more
+            clarity. Choose any path below; each opens a small conversation with me.
           </p>
         </Reveal>
-        <Reveal delay={0.15}>
+        {/* <Reveal delay={0.15}>
           <Accordion type="single" collapsible className="mt-12 space-y-3">
             {items.map((item, i) => (
               <AccordionItem
@@ -69,7 +69,7 @@ export default function AssessmentPage() {
               </AccordionItem>
             ))}
           </Accordion>
-        </Reveal>
+        </Reveal> */}
       </div>
     </section>
   );
