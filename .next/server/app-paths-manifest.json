@@ -1,7 +1,4 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/workshops/page": "app/workshops/page.js",
-  "/assessment/page": "app/assessment/page.js",
-  "/about/page": "app/about/page.js",
+  "/enquiry/page": "app/enquiry/page.js",
   "/crocus-diaries/page": "app/crocus-diaries/page.js"
 }
