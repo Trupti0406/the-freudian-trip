@@ -3,13 +3,12 @@
 import { Reveal } from "@/components/site/Reveal";
 import { StepperForm } from "@/components/site/StepperForm";
 import { intakeFields } from "@/data/stepperform";
+import { sendEmail } from "@/lib/emailjs";
 import { toast } from "sonner";
 
 export function IntakeClient() {
   async function handleSubmit(values: Record<string, string>) {
-    await new Promise((resolve) => setTimeout(resolve, 700));
-
-    console.log(values);
+    await sendEmail(process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_INTAKE!, values);
 
     toast.success("Thank you — your intake form has been received.");
   }

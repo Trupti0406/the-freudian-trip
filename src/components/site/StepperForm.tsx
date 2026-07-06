@@ -15,6 +15,16 @@ export interface StepperField {
   /** small supporting line under the question */
   helperText?: string;
   rows?: number;
+  /** for type "number": min/max allowed value */
+  min?: number;
+  max?: number;
+  /** for type "tel"/"text": regex (as a string) the value must match, checked after
+   *  stripping spaces and dashes for "tel" fields */
+  pattern?: string;
+  /** custom error message shown when `pattern` fails */
+  patternMessage?: string;
+  /** caps input length in the UI */
+  maxLength?: number;
 }
 
 export interface StepperFormProps {
@@ -41,12 +51,46 @@ function validate(field: StepperField, raw: string) {
     return "That doesn't look like a valid email address.";
   }
 
-  if (field.type === "tel" && value.replace(/\D/g, "").length < 7) {
-    return "That doesn't look like a valid phone number.";
+  if (field.type === "tel") {
+    const normalized = value.replace(/[\s-]/g, "");
+
+    if (field.pattern) {
+      if (!new RegExp(field.pattern).test(normalized)) {
+        return field.patternMessage ?? "That doesn't look like a valid phone number.";
+      }
+    } else if (normalized.replace(/\D/g, "").length < 7) {
+      return "That doesn't look like a valid phone number.";
+    }
   }
 
-  if (field.type === "number" && (Number.isNaN(Number(value)) || Number(value) <= 0)) {
-    return "Please enter a valid number.";
+  if (field.type === "number") {
+    const num = Number(value);
+
+    if (Number.isNaN(num)) {
+      return "Please enter a valid number.";
+    }
+
+    if (!Number.isInteger(num)) {
+      return "Please enter a whole number.";
+    }
+
+    if (field.min !== undefined && num < field.min) {
+      return `Please enter a number of at least ${field.min}.`;
+    }
+
+    if (field.max !== undefined && num > field.max) {
+      return `Please enter a number no greater than ${field.max}.`;
+    }
+
+    if (field.min === undefined && num <= 0) {
+      return "Please enter a valid number.";
+    }
+  }
+
+  if (field.type === "text" && field.pattern) {
+    if (!new RegExp(field.pattern).test(value)) {
+      return field.patternMessage ?? "That doesn't look like a valid value.";
+    }
   }
 
   return null;
@@ -136,14 +180,6 @@ export function StepperForm({
     <form onSubmit={handleStepSubmit} className="mt-12 space-y-10">
       {/* Stepper on top */}
       <div className="space-y-3">
-        {/* <div className="flex items-center justify-between text-sm text-foreground/60">
-          <span>Step {step + 1}</span>
-
-          <span>
-            {step + 1} / {total}
-          </span>
-        </div> */}
-
         <div className="h-[3px] w-full overflow-hidden rounded-full bg-border/30">
           <div
             className="h-full rounded-full bg-mauve transition-all duration-500 ease-out"
@@ -209,6 +245,10 @@ export function StepperForm({
               value={values[field.name] ?? ""}
               onChange={(e) => update(field.name, e.target.value)}
               placeholder={field.placeholder}
+              min={field.min}
+              max={field.max}
+              maxLength={field.maxLength}
+              inputMode={field.type === "tel" || field.type === "number" ? "numeric" : undefined}
               className="
                 mt-6
                 w-full
