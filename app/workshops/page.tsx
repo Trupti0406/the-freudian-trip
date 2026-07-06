@@ -49,22 +49,22 @@ export default function WorkshopsPage() {
 
                 <ul className="mt-6 space-y-3">
                   <li className="flex gap-2 text-sm text-foreground/70">
-                    <span className="text-mauve">✦</span>
+                    <span className="text-mauve">❀</span>
                     <span>Identity and belonging</span>
                   </li>
 
                   <li className="flex gap-2 text-sm text-foreground/70">
-                    <span className="text-mauve">✦</span>
+                    <span className="text-mauve">❀</span>
                     <span>Emotional wellbeing</span>
                   </li>
 
                   <li className="flex gap-2 text-sm text-foreground/70">
-                    <span className="text-mauve">✦</span>
+                    <span className="text-mauve">❀</span>
                     <span>Relationships and communication</span>
                   </li>
 
                   <li className="flex gap-2 text-sm text-foreground/70">
-                    <span className="text-mauve">✦</span>
+                    <span className="text-mauve">❀</span>
                     <span>Reflective and experiential spaces</span>
                   </li>
                 </ul>
@@ -86,22 +86,22 @@ export default function WorkshopsPage() {
 
                 <ul className="mt-6 space-y-3">
                   <li className="flex gap-2 text-sm text-foreground/70">
-                    <span className="text-mauve">✦</span>
+                    <span className="text-mauve">❀</span>
                     <span>Inclusion and diversity</span>
                   </li>
 
                   <li className="flex gap-2 text-sm text-foreground/70">
-                    <span className="text-mauve">✦</span>
+                    <span className="text-mauve">❀</span>
                     <span>Mental health and wellbeing</span>
                   </li>
 
                   <li className="flex gap-2 text-sm text-foreground/70">
-                    <span className="text-mauve">✦</span>
+                    <span className="text-mauve">❀</span>
                     <span>Queer-affirmative practices</span>
                   </li>
 
                   <li className="flex gap-2 text-sm text-foreground/70">
-                    <span className="text-mauve">✦</span>
+                    <span className="text-mauve">❀</span>
                     <span>Reflective practice and awareness</span>
                   </li>
                 </ul>

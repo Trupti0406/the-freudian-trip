@@ -1,13 +1,8 @@
 {
-  "/robots.txt/route": "app/robots.txt/route.js",
-  "/sitemap.xml/route": "app/sitemap.xml/route.js",
-  "/_not-found/page": "app/_not-found/page.js",
-  "/workshops/page": "app/workshops/page.js",
-  "/assessment/page": "app/assessment/page.js",
-  "/enquiry/page": "app/enquiry/page.js",
-  "/about/page": "app/about/page.js",
   "/crocus-diaries/page": "app/crocus-diaries/page.js",
-  "/therapy/page": "app/therapy/page.js",
-  "/populations/page": "app/populations/page.js",
-  "/page": "app/page.js"
+  "/page": "app/page.js",
+  "/assessment/page": "app/assessment/page.js",
+  "/workshops/page": "app/workshops/page.js",
+  "/intake/page": "app/intake/page.js",
+  "/about/page": "app/about/page.js"
 }

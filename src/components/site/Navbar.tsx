@@ -10,7 +10,7 @@ const links = [
   { to: "/crocus-diaries", label: "Crocus Diaries" },
   { to: "/assessment", label: "Assessment" },
   { to: "/workshops", label: "Workshops" },
-  { to: "/enquiry", label: "Enquiry Form" },
+  { to: "/intake", label: "Intake Form" },
   // { to: "/therapy", label: "Therapy" },
   // { to: "/populations", label: "Populations" },
 ] as const;

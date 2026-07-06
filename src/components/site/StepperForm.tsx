@@ -276,6 +276,7 @@ export function StepperForm({
             type="button"
             onClick={goBack}
             className="
+             cursor-pointer
               text-sm
               text-foreground/60
               transition
@@ -292,6 +293,7 @@ export function StepperForm({
           type="submit"
           disabled={sending}
           className="
+           cursor-pointer
             rounded-full
             bg-mauve
             px-7
@@ -301,6 +303,7 @@ export function StepperForm({
             transition-transform
             hover:-translate-y-0.5
             disabled:opacity-60
+            disabled:cursor-not-allowed
           "
         >
           {isLast ? (sending ? "Sending..." : submitLabel) : "Next"}

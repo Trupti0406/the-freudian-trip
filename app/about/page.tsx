@@ -7,7 +7,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { FlowerDiagram } from "@/components/site/Flowerdiagra";
 
 export const metadata: Metadata = {
   title: "About Me — The Freudian Trip",
@@ -41,46 +40,110 @@ const academicQualifications = [
 
 export default function AboutPage() {
   return (
-    <section className="px-6 py-24">
+    <section className="px-6 pt-2 pb-24">
       <div className="mx-auto max-w-5xl">
-        {/* ── Page header ───────────────────────────────────────── */}
+        {/* ── Page header — small crocus-bunch accent tucked beside it ── */}
         <Reveal>
-          <p className="text-center script text-2xl text-mauve">a little about me</p>
-          <h1 className="mt-2 text-center display text-6xl">About Me</h1>
-        </Reveal>
-        {/* ── Flower diagram ────────────────────────────────────── */}
-        <Reveal delay={0.15}>
-          <div className="mt-2 flex justify-center">
+          <div className="relative">
             <Image
-              src="/assets/crocus.png"
-              alt="Flower"
-              width={430}
-              height={430}
-              className="h-auto w-auto max-w-full"
-              priority
+              src="/assets/crocus-bunch.png"
+              alt=""
+              aria-hidden="true"
+              width={110}
+              height={126}
+              className="pointer-events-none absolute -right-4 -top-6 hidden w-24 select-none -rotate-6 opacity-90 drop-shadow-[0_16px_24px_rgba(190,150,200,0.25)] sm:block md:-right-10 md:w-28 lg:w-32"
             />
+            <p className="text-center script text-2xl text-mauve">a little about me</p>
+            <h1 className="mt-2 text-center display text-6xl">About Me</h1>
           </div>
         </Reveal>
+
+        {/* ── Meet the therapist — bio section ───────────────────
+            Swap the image src below for your Canva photo. Replace
+            the heading + paragraph with your own copy. */}
+        <Reveal delay={0.25}>
+          <div className="mt-20 grid items-center gap-12 md:grid-cols-2">
+            <div className="relative mx-auto w-full max-w-sm">
+              <div className="overflow-hidden rounded-3xl border border-lavender/40 shadow-[var(--shadow-petal)]">
+                <Image
+                  src="/assets/crocus.png" // TODO: replace with your photo from Canva
+                  alt="Rutuja, therapist and founder of The Freudian Trip"
+                  width={430}
+                  height={430}
+                  className="h-auto w-full object-cover"
+                  priority
+                />
+              </div>
+              <span
+                aria-hidden="true"
+                className="pointer-events-none absolute -bottom-4 -right-4 select-none text-4xl text-mauve/70"
+              >
+                ❀
+              </span>
+            </div>
+
+            <div className="text-center md:text-left">
+              <p className="script text-2xl text-mauve">the person behind the practice</p>
+              <h2 className="mt-2 display text-4xl">Hi, I'm Rutuja</h2>
+              <p className="mt-4 leading-relaxed text-foreground/70">
+                {/* TODO: replace with your bio copy */}
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tempora
+                deleniti provident veritatis quam consectetur, delectus libero vitae nisi ducimus
+                soluta vero. Vel facere aperiam ratione neque. A repellat facere ipsam veritatis
+                quidem deleniti ad perspiciatis vel totam animi. Nostrum consequuntur illum ipsum?
+                Dignissimos, earum.
+              </p>
+            </div>
+          </div>
+        </Reveal>
+
+        {/* ── Identity pills — flat, icon-led, no rotation ── */}
+        <Reveal delay={0.15}>
+          <div className="mt-8 flex flex-col items-center">
+            <div className="flex max-w-2xl flex-wrap justify-center gap-2.5">
+              {petals.map((p, i) => {
+                const toneB = i % 2 === 1;
+                return (
+                  <span
+                    key={p.label}
+                    className={`inline-flex items-center gap-1.5 rounded-full border px-4 py-1.5 text-xs font-medium tracking-wide shadow-sm transition-transform duration-200 hover:-translate-y-0.5 ${
+                      toneB
+                        ? "border-blush/60 bg-blush/40 text-mauve"
+                        : "border-lavender/60 bg-lavender/40 text-mauve"
+                    }`}
+                  >
+                    <span aria-hidden="true" className="text-[10px] text-mauve/70">
+                      ❀
+                    </span>
+                    {p.label}
+                  </span>
+                );
+              })}
+            </div>
+          </div>
+        </Reveal>
+
         {/* ── Professional accordion ────────────────────────────── */}
-        <Reveal delay={0.3}>
+        <Reveal delay={0.4}>
           <div className="mx-auto mt-20 max-w-3xl">
             <h2 className="text-center display text-4xl">What Makes Me, Me Professionally?</h2>
 
             <Accordion type="single" collapsible className="mt-8 space-y-3">
-              {/* Academic qualifications */}
               <AccordionItem value="academic" className="watercolor-card border-0 px-6">
                 <AccordionTrigger className="display text-lg hover:no-underline">
                   Foundations of Practice
                 </AccordionTrigger>
-                <AccordionContent className="text-foreground/70 leading-relaxed">
+                <AccordionContent className="leading-relaxed text-foreground/70">
                   <p className="mb-3">
                     Academically, the following have helped me build and shape the philosophy and
                     praxis for my professional work:
                   </p>
-                  <ul className="space-y-2 list-none">
+                  <ul className="list-none space-y-2">
                     {academicQualifications.map((q) => (
                       <li key={q} className="flex gap-2">
-                        <span className="mt-1 shrink-0 text-mauve">✦</span>
+                        <span aria-hidden="true" className="mt-1 shrink-0 text-mauve">
+                          ❀
+                        </span>
                         <span>{q}</span>
                       </li>
                     ))}

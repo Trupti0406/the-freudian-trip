@@ -31,27 +31,32 @@ export function Footer() {
             <Mail className="h-4 w-4" /> hello@thefreudiantrip.com
           </a>
           <a
-            href="tel:+0000000000"
+            href="tel:8655023088"
             className="inline-flex items-center gap-2 rounded-full bg-cream/70 px-4 py-2 transition-colors hover:bg-cream"
           >
-            <Phone className="h-4 w-4" /> +00 0000 000 000
+            <Phone className="h-4 w-4" /> +86550 23088
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/rutuja-t-460631339/"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full bg-cream/70 px-4 py-2 transition-colors hover:bg-cream"
           >
-            <Instagram className="h-4 w-4" /> @placeholder
-          </a>
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 rounded-full bg-cream/70 px-4 py-2 transition-colors hover:bg-cream"
-          >
-            <Linkedin className="h-4 w-4" /> placeholder
+            <Linkedin className="h-4 w-4" /> LinkedIn
           </a>
         </div>
 
-        <p className="mt-12 inline-flex items-center gap-1.5 text-sm text-foreground/50">
-          Made with ❤️ © {new Date().getFullYear()} The Freudian Trip
+        <p className="mt-12 inline-flex flex-wrap items-center justify-center gap-1.5 text-sm text-foreground/60">
+          Made with <Heart className="h-3.5 w-3.5 fill-current text-mauve" /> by{" "}
+          <a
+            href="https://www.linkedin.com/in/trupti-yadav/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium underline decoration-mauve/40 underline-offset-2 hover:text-mauve transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mauve/50 rounded"
+          >
+            Trupti
+          </a>{" "}
+          © {new Date().getFullYear()} The Freudian Trip
         </p>
       </div>
     </footer>

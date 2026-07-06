@@ -2,7 +2,6 @@
 import type { Metadata } from "next";
 import { Reveal } from "@/components/site/Reveal";
 import { CommunityCard } from "@/components/site/CommunityCard";
-import { CloudBubble } from "@/components/site/CloudBubble";
 
 export const metadata: Metadata = {
   title: "Crocus Diaries — The Freudian Trip",
@@ -28,6 +27,18 @@ const thoughtTopics = [
   "Support for clinical disorders",
   "Support for neurodivergence",
 ];
+
+// Static per-cloud "scatter" — breaks the grid without any JS
+const ROTATIONS = [-4, 3, -2, 4, -3, 2, -5, 3.5];
+const OFFSETS_Y = [0, 10, -6, 8, -10, 4, -4, 6];
+const OFFSETS_X = [0, -10, 6, -4, 12, -8, 4, -6]; // new: horizontal jitter
+
+// Continuous "drift" — each cloud gets its own rhythm so they never sync up
+const FLOAT_DURATIONS = [5, 6, 4.5, 6.5, 5.5, 5, 6, 4.8]; // faster than before → more perceptible
+const FLOAT_DELAYS = [0, 0.8, 1.6, 0.3, 1.2, 0.5, 1.9, 1.0];
+const FLOAT_SWAY = [5, -4, 6, -5, 4.5, -5.5, 5, -4.5]; // was ~2deg, now ~5deg
+const FLOAT_RISE = [20, 24, 16, 26, 20, 18, 24, 16]; // was ~10px, now ~20px
+const FLOAT_DRIFT = [8, -7, 9, -8, 7, -9, 8, -7]; // new: side-to-side px
 
 const communities = [
   {
@@ -59,6 +70,29 @@ const communities = [
 export default function DiariesPage() {
   return (
     <div className="relative min-h-screen ">
+      {/* Scoped, dependency-free keyframes — pure CSS, zero JS cost */}
+
+      <style>{`
+  @keyframes cloud-float {
+    0%, 100% {
+      transform: rotate(var(--base-rot)) translate(0px, 0px);
+    }
+    50% {
+      transform: rotate(calc(var(--base-rot) + var(--sway))) translate(var(--drift), calc(var(--rise) * -1));
+    }
+  }
+  .animate-cloud-float {
+    animation-name: cloud-float;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-cloud-float {
+      animation: none;
+    }
+  }
+`}</style>
+
       {/* Dear Diary — vertical left-side decoration */}
       <div className="pointer-events-none absolute left-2 top-40 hidden xl:block">
         <p
@@ -105,7 +139,7 @@ export default function DiariesPage() {
         </div>
       </section>
 
-      {/* Areas I Work With — cloud bubbles */}
+      {/* Areas I Work With — freestyle floating clouds */}
       <section className="px-6 py-16">
         <div className="mx-auto max-w-5xl">
           <Reveal>
@@ -115,10 +149,54 @@ export default function DiariesPage() {
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <div className="mt-14 mx-auto flex flex-wrap justify-center gap-x-10 gap-y-8 max-w-6xl">
-              {thoughtTopics.map((topic, i) => (
-                <CloudBubble key={topic} label={topic} index={i} delay={i * 0.05} />
-              ))}
+            <div className="mt-14 mx-auto flex flex-wrap justify-center gap-y-8 max-w-6xl">
+              {thoughtTopics.map((topic, i) => {
+                const rotation = ROTATIONS[i % ROTATIONS.length];
+                const offsetY = OFFSETS_Y[i % OFFSETS_Y.length];
+                const offsetX = OFFSETS_X[i % OFFSETS_X.length];
+                const duration = FLOAT_DURATIONS[i % FLOAT_DURATIONS.length];
+                const delay = FLOAT_DELAYS[i % FLOAT_DELAYS.length];
+                const sway = FLOAT_SWAY[i % FLOAT_SWAY.length];
+                const rise = FLOAT_RISE[i % FLOAT_RISE.length];
+                const drift = FLOAT_DRIFT[i % FLOAT_DRIFT.length];
+
+                return (
+                  <div
+                    key={topic}
+                    className="relative flex h-[110px] w-[190px] sm:w-[230px] shrink-0 items-center justify-center animate-in fade-in zoom-in-95 duration-700"
+                    style={{
+                      animationDelay: `${i * 0.05}s`,
+                      animationFillMode: "backwards",
+                      // static scatter offset — breaks the grid, no animation here
+                      transform: `translate(${offsetX}px, ${offsetY}px)`,
+                    }}
+                  >
+                    <img
+                      src="/assets/cloud.png"
+                      alt=""
+                      aria-hidden="true"
+                      width={230}
+                      height={288}
+                      loading="lazy"
+                      className="pointer-events-none w-full h-auto select-none drop-shadow-[0_10px_20px_rgba(150,180,210,0.25)] transition-transform duration-300 hover:scale-105 animate-cloud-float"
+                      style={
+                        {
+                          "--base-rot": `${rotation}deg`,
+                          "--sway": `${sway}deg`,
+                          "--rise": `${rise}px`,
+                          "--drift": `${drift}px`,
+                          animationDuration: `${duration}s`,
+                          animationDelay: `${delay}s`,
+                        } as React.CSSProperties
+                      }
+                    />
+
+                    <span className="absolute inset-0 flex items-center justify-center px-8 text-center text-sm sm:text-[15px] font-medium leading-snug text-foreground/80">
+                      {topic}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </Reveal>
         </div>

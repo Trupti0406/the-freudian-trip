@@ -48,10 +48,18 @@ function Hero() {
             </div>
           </Reveal>
         </div>
-
         {/* Quote */}
         <Reveal delay={0.32}>
-          <div className="mt-8 text-center">
+          <div className="relative mt-8 text-center">
+            <img
+              src="/assets/crocus-line.png"
+              alt=""
+              aria-hidden="true"
+              width={257}
+              height={343}
+              loading="lazy"
+              className="pointer-events-none absolute -right-2 -top-6 hidden w-20 -rotate-6 select-none opacity-20 sm:block md:-right-6 md:w-24 lg:w-28"
+            />
             <p className="mx-auto max-w-4xl display text-xl text-foreground/75 sm:text-2xl">
               "People are just as wonderful as sunsets if I can let them be. When I look at a
               sunset, I don't find myself saying, "Soften the orange a little on the right hand
@@ -64,7 +72,6 @@ function Hero() {
             </p>
           </div>
         </Reveal>
-
         {/* Three path cards */}
         <Reveal delay={0.42}>
           <ThreePathsSection />
@@ -84,10 +91,20 @@ function ThreePathsSection() {
   );
 }
 
+// ApproachSection():
 function ApproachSection() {
   return (
     <section className="px-6 py-20">
-      <div className="mx-auto max-w-4xl text-center">
+      <div className="relative mx-auto max-w-4xl text-center">
+        <img
+          src="/assets/crocus-bunch.png"
+          alt=""
+          aria-hidden="true"
+          width={591}
+          height={675}
+          loading="lazy"
+          className="pointer-events-none absolute -left-6 -top-10 hidden w-24 -rotate-6 select-none opacity-90 drop-shadow-[0_20px_30px_rgba(190,150,200,0.25)] md:block lg:-left-10 lg:w-32"
+        />
         <Reveal>
           <p className="script text-2xl text-mauve">A note from me</p>
           <h2 className="mt-2 display text-4xl sm:text-5xl">My Therapeutic Approach</h2>
