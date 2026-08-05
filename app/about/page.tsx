@@ -9,9 +9,10 @@ import {
 } from "@/components/ui/accordion";
 
 export const metadata: Metadata = {
-  title: "About Me — The Freudian Trip",
+  title: "About Me",
   description:
     "Trauma-informed, queer-affirmative, decolonised therapist — meet the person behind The Freudian Trip.",
+  alternates: { canonical: "/about" },
   openGraph: {
     title: "About Me — The Freudian Trip",
     description: "A multicultural, inclusive educator and therapist.",
@@ -40,7 +41,7 @@ const academicQualifications = [
 
 export default function AboutPage() {
   return (
-    <section className="px-6 pt-2 pb-24">
+    <section className="overflow-hidden px-6 py-24">
       <div className="mx-auto max-w-5xl">
         {/* ── Page header — small crocus-bunch accent tucked beside it ── */}
         <Reveal>
@@ -86,12 +87,12 @@ export default function AboutPage() {
               <p className="script text-2xl text-mauve">the person behind the practice</p>
               <h2 className="mt-2 display text-4xl">Hi, I'm Rutuja</h2>
               <p className="mt-4 leading-relaxed text-foreground/70">
-                {/* TODO: replace with your bio copy */}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit tempora
-                deleniti provident veritatis quam consectetur, delectus libero vitae nisi ducimus
-                soluta vero. Vel facere aperiam ratione neque. A repellat facere ipsam veritatis
-                quidem deleniti ad perspiciatis vel totam animi. Nostrum consequuntur illum ipsum?
-                Dignissimos, earum.
+                {/* TODO: replace with Rutuja's own bio copy */}
+                I hold space for people navigating identity, trauma and the quiet questions of
+                everyday life — with a trauma-informed, queer-affirmative and decolonised lens
+                shaped by my training in clinical psychology. My full story is on its way; in the
+                meantime, you can read about my qualifications and approach below, or reach out
+                directly if you'd like to know more.
               </p>
             </div>
           </div>

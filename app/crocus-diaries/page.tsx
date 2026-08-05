@@ -4,8 +4,9 @@ import { Reveal } from "@/components/site/Reveal";
 import { CommunityCard } from "@/components/site/CommunityCard";
 
 export const metadata: Metadata = {
-  title: "Crocus Diaries — The Freudian Trip",
+  title: "Crocus Diaries",
   description: "Reflections, essays and quiet writings on therapy, healing and being human.",
+  alternates: { canonical: "/crocus-diaries" },
   openGraph: {
     title: "Crocus Diaries — The Freudian Trip",
     description: "Reflections from the therapy room and the world outside it.",
@@ -93,6 +94,11 @@ export default function DiariesPage() {
   }
 `}</style>
 
+      {/* Visually-hidden H1 — this page leads with imagery/decoration rather
+          than a text banner like other pages, but still needs a real
+          heading for SEO and screen readers. */}
+      <h1 className="sr-only">Crocus Diaries — Reflections on Therapy, Healing and Being Human</h1>
+
       {/* Dear Diary — vertical left-side decoration */}
       <div className="pointer-events-none absolute left-2 top-40 hidden xl:block">
         <p
@@ -104,7 +110,7 @@ export default function DiariesPage() {
       </div>
 
       {/* Crocus significance */}
-      <section className="relative px-6 py-20">
+      <section className="relative px-6 py-24">
         <div className="mx-auto grid max-w-5xl items-center gap-12 md:grid-cols-2">
           <Reveal>
             <img

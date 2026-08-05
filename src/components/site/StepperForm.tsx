@@ -267,7 +267,11 @@ export function StepperForm({
           )}
         </label>
 
-        {error && <p className="mt-3 text-sm text-rose-500">{error}</p>}
+        {error && (
+          <p role="alert" className="mt-3 text-sm text-rose-500">
+            {error}
+          </p>
+        )}
       </div>
 
       <div className="flex items-center justify-between pt-4">

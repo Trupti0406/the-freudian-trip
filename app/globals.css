@@ -14,9 +14,9 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
 
-  --font-display: "Cormorant Garamond", "Playfair Display", serif;
-  --font-script: "Caveat", cursive;
-  --font-sans: "Inter", "Lato", sans-serif;
+  --font-display: var(--font-cormorant), "Playfair Display", serif;
+  --font-script: var(--font-caveat), cursive;
+  --font-sans: var(--font-inter), "Lato", sans-serif;
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);

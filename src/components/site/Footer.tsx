@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Instagram, Mail, Phone, Heart, Linkedin } from "lucide-react";
-import sunset from "@/assets/sunset.jpg";
+import Link from "next/link";
+import { Mail, Phone, Heart, Linkedin } from "lucide-react";
 
 export function Footer() {
   return (
@@ -46,7 +46,21 @@ export function Footer() {
           </a>
         </div>
 
-        <p className="mt-12 inline-flex flex-wrap items-center justify-center gap-1.5 text-sm text-foreground/60">
+        {/* <p className="mt-10 text-xs text-foreground/60">
+          If you're in crisis or need immediate support, please contact your local emergency
+          services or the KIRAN Mental Health Helpline — 1800-599-0019 (toll-free, 24x7, India).
+        </p> */}
+
+        <p className="mt-4 text-sm text-foreground/60">
+          <Link
+            href="/privacy"
+            className="underline decoration-mauve/40 underline-offset-2 transition-colors hover:text-mauve focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mauve/50 rounded"
+          >
+            Privacy Policy
+          </Link>
+        </p>
+
+        <p className="mt-4 inline-flex flex-wrap items-center justify-center gap-1.5 text-sm text-foreground/60">
           Made with <Heart className="h-3.5 w-3.5 fill-current text-mauve" /> by{" "}
           <a
             href="https://www.linkedin.com/in/trupti-yadav/"

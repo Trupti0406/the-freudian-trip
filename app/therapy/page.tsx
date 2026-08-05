@@ -1,24 +1,35 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Reveal } from "@/components/site/Reveal";
+import { JsonLd } from "@/components/site/JsonLd";
+import { serviceJsonLd } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Therapy — The Freudian Trip",
+  title: "Therapy",
   description: "A safe, confidential and empathetic space to explore experiences, emotions and challenges.",
+  alternates: { canonical: "/therapy" },
   openGraph: {
     title: "Therapy — The Freudian Trip",
     description: "Therapy is a collaborative journey towards healing, self-understanding and growth.",
   },
 };
 
+const jsonLd = serviceJsonLd({
+  name: "Therapy",
+  description:
+    "Individual, trauma-informed and queer-affirmative therapy, offered online and in-person on a sliding scale.",
+  path: "/therapy",
+});
+
 export default function TherapyPage() {
   return (
-    <section className="relative px-6 py-24">
+    <section className="relative overflow-hidden px-6 py-24">
+      <JsonLd data={jsonLd} />
       <img src="/assets/sprig.png" alt="" loading="lazy" width={768} height={768} className="pointer-events-none absolute top-10 -right-20 w-72 opacity-50 hidden md:block" />
       <div className="mx-auto max-w-3xl text-center">
         <Reveal>
           <p className="script text-2xl text-mauve">a gentle invitation</p>
-          <h1 className="mt-3 display text-6xl text-foreground sm:text-7xl">Therapy</h1>
+          <h1 className="mt-3 display text-6xl text-foreground">Therapy</h1>
         </Reveal>
         <Reveal delay={0.15}>
           <p className="mt-10 display text-xl italic leading-relaxed text-foreground/80 sm:text-2xl">
@@ -31,7 +42,7 @@ export default function TherapyPage() {
           </p>
         </Reveal>
         <Reveal delay={0.35}>
-          <Link href="/enquiry" className="mt-10 inline-flex rounded-full bg-mauve px-8 py-3 text-sm text-primary-foreground transition-transform hover:-translate-y-0.5">
+          <Link href="/intake" className="mt-10 inline-flex rounded-full bg-mauve px-8 py-3 text-sm text-primary-foreground transition-transform hover:-translate-y-0.5">
             Get In Touch
           </Link>
         </Reveal>
@@ -44,7 +55,7 @@ export default function TherapyPage() {
               { t: "Sliding scale", d: "Accessibility-aware pricing options." },
             ].map((c) => (
               <div key={c.t} className="watercolor-card px-6 py-6">
-                <h3 className="display text-xl text-mauve">{c.t}</h3>
+                <h2 className="display text-xl text-mauve">{c.t}</h2>
                 <p className="mt-2 text-sm text-foreground/70">{c.d}</p>
               </div>
             ))}

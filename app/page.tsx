@@ -1,5 +1,6 @@
 // app/page.tsx  — Server Component (no "use client")
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { Play } from "lucide-react";
 import { Reveal } from "@/components/site/Reveal";
@@ -8,13 +9,7 @@ import { WorkshopsCard } from "@/components/site/WorkshopsCard";
 import { TherapyCard } from "@/components/site/TherapyCard";
 
 export const metadata: Metadata = {
-  title: "The Freudian Trip — Welcome",
-  description:
-    "Welcome to The Freudian Trip — a soft, safe and inclusive space for therapy, assessment and workshops.",
-  openGraph: {
-    title: "Welcome to The Freudian Trip",
-    description: "A gentle journey toward healing, self-understanding and growth.",
-  },
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {
@@ -30,17 +25,27 @@ function Hero() {
   return (
     <section className="relative px-6 pt-10 pb-24 sm:pt-2">
       <div className="relative mx-auto max-w-4xl">
+        {/* Visually-hidden H1 — the logo image below carries the visual
+            brand mark, but search engines and screen readers need a real
+            text heading naming the page/practice. */}
+        <h1 className="sr-only">
+          The Freudian Trip — Trauma-Informed, Queer-Affirmative Therapy with Prof. Rutuja
+        </h1>
         {/* ── Stacked hero: title floats above the couch image ── */}
         <div className="relative flex flex-col items-center">
-          {/* Couch image — pulls up so its arms peek behind the title */}
+          {/* Logo mark — pulls up so it reads as the hero's centerpiece.
+              next/image + priority preloads this as early as possible and
+              skips lazy-loading, since it's the page's LCP element. */}
           <Reveal delay={0.2}>
-            <div className="relative -mt-4 w-full max-w-2xl select-none">
-              <img
-                src="/assets/couch.png"
-                alt="A watercolour therapy couch with a crocus flower resting beside it"
-                width={1359}
-                height={814}
-                className="w-full object-contain drop-shadow-sm"
+            <div className="relative -mt-4 w-full max-w-lg select-none">
+              <Image
+                src="/assets/logo-hero-black.webp"
+                alt="The Freudian Trip — ornate therapy couch and wordmark"
+                width={1400}
+                height={653}
+                priority
+                sizes="(min-width: 640px) 512px, 100vw"
+                className="w-full h-auto object-contain drop-shadow-sm"
               />
               <p className="mt-1 text-center text-md font-bold tracking-[0.28em] uppercase text-foreground/35">
                 ❀ By Prof. Rutuja

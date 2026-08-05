@@ -9,24 +9,21 @@ export function AssessmentCard() {
   const [open, setOpen] = useState(false);
 
   return (
-    <Link
-      href="/assessment"
-      className="watercolor-card flex flex-col items-center gap-3 px-6 py-8 text-center"
-      onClick={(e) => open && e.preventDefault()}
-    >
-      <span className="grid h-14 w-14 place-items-center rounded-full bg-lavender/40 text-mauve">
-        <ClipboardList className="h-6 w-6" strokeWidth={1.5} />
-      </span>
-      <span className="display text-2xl">Assessment</span>
-      <span className="text-sm text-foreground/65">
-        Reflective tools to better understand yourself.
-      </span>
+    <div className="watercolor-card flex flex-col items-center gap-3 px-6 py-8 text-center">
+      <Link href="/assessment" className="flex flex-col items-center gap-3">
+        <span className="grid h-14 w-14 place-items-center rounded-full bg-lavender/40 text-mauve">
+          <ClipboardList className="h-6 w-6" strokeWidth={1.5} />
+        </span>
+        <h2 className="display text-2xl">Assessment</h2>
+        <span className="text-sm text-foreground/65">
+          Reflective tools to better understand yourself.
+        </span>
+      </Link>
       <button
-        onClick={(e) => {
-          e.preventDefault();
-          setOpen((v) => !v);
-        }}
-        className="mt-2 inline-flex items-center gap-1 text-xs tracking-[0.25em] uppercase text-mauve"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        aria-controls="assessment-options"
+        className="mt-2 inline-flex items-center gap-1 rounded-full text-xs tracking-[0.25em] uppercase text-mauve outline-none focus-visible:ring-2 focus-visible:ring-mauve/60"
       >
         {open ? "Hide options" : "View options"}
         <ChevronDown className={`h-3 w-3 transition-transform ${open ? "rotate-180" : ""}`} />
@@ -34,6 +31,7 @@ export function AssessmentCard() {
       <AnimatePresence initial={false}>
         {open && (
           <motion.ul
+            id="assessment-options"
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
@@ -53,6 +51,6 @@ export function AssessmentCard() {
           </motion.ul>
         )}
       </AnimatePresence>
-    </Link>
+    </div>
   );
 }

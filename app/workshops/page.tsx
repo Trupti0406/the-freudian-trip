@@ -1,31 +1,41 @@
-"use client";
-
+import type { Metadata } from "next";
 import { Reveal } from "@/components/site/Reveal";
 import WorkshopEnquiryForm from "@/components/site/WorkshopEnquiryForm";
+import { JsonLd } from "@/components/site/JsonLd";
+import { serviceJsonLd } from "@/lib/site";
 import { Building2, Sparkles } from "lucide-react";
-import { useState } from "react";
-import { toast } from "sonner";
 
-const audiences = [
-  "Schools & educational institutions",
-  "Colleges & universities",
-  "NGOs & community spaces",
-  "Teams & workplaces",
-  "Mental health professionals",
-];
+export const metadata: Metadata = {
+  title: "Workshops",
+  description:
+    "Inclusive, reflective workshops on mental health, identity and belonging for schools, colleges, NGOs, workplaces and community groups.",
+  alternates: { canonical: "/workshops" },
+  openGraph: {
+    title: "Workshops — The Freudian Trip",
+    description:
+      "Workshops for groups, schools, colleges, workplaces and organisations on mental health, inclusion and reflective practice.",
+  },
+};
 
-const themes = [
-  "Mental health & emotional wellbeing",
-  "Inclusion & diversity",
-  "Queer-affirmative practice",
-  "Identity & belonging",
-  "Reflective practice",
-  "Child & adolescent wellbeing",
-];
+const jsonLd = serviceJsonLd({
+  name: "Workshops",
+  description:
+    "Inclusive workshops on mental health, identity and belonging for schools, colleges, NGOs, workplaces and community groups.",
+  path: "/workshops",
+});
 
 export default function WorkshopsPage() {
   return (
-    <section className="px-6 py-24">
+    <section className="relative overflow-hidden px-6 py-24">
+      <JsonLd data={jsonLd} />
+      <img
+        src="/assets/petal-scatter.svg"
+        alt=""
+        aria-hidden="true"
+        width={200}
+        height={200}
+        className="pointer-events-none absolute -top-2 -left-8 hidden w-32 rotate-45 select-none opacity-30 md:block lg:w-40"
+      />
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="text-center script text-2xl text-mauve">gather, learn, reflect</p>
@@ -116,7 +126,7 @@ export default function WorkshopsPage() {
 
         <Reveal delay={0.3}>
           <div className="watercolor-card mt-8 px-8 py-8 text-center">
-            <h3 className="display text-2xl">Looking for something specific?</h3>
+            <h2 className="display text-2xl">Looking for something specific?</h2>
 
             <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-foreground/70">
               Workshops can also be designed around specific themes, contexts, and needs. If you

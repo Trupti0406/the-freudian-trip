@@ -41,7 +41,7 @@ export default function WorkshopEnquiryForm() {
   if (done) {
     return (
       <div className="watercolor-card flex h-full flex-col items-center justify-center gap-3 px-7 py-8 text-center">
-        <h3 className="display text-2xl text-mauve">Thank you</h3>
+        <h2 className="display text-2xl text-mauve">Thank you</h2>
         <p className="text-sm text-foreground/70">
           Your enquiry has been received. I&apos;ll be in touch soon.
         </p>
@@ -51,7 +51,7 @@ export default function WorkshopEnquiryForm() {
 
   return (
     <div className="watercolor-card flex h-full flex-col gap-4 px-7 py-8">
-      <h3 className="display text-2xl text-mauve">Workshop enquiry</h3>
+      <h2 className="display text-2xl text-mauve">Workshop enquiry</h2>
       <p className="text-sm text-foreground/65">
         Share a few details about your organisation or group.
       </p>
@@ -64,7 +64,7 @@ export default function WorkshopEnquiryForm() {
             name="name"
             value={values.name}
             onChange={(e) => update("name", e.target.value)}
-            className="mt-1 w-full rounded-xl border border-border bg-cream/70 px-3 py-2 text-sm outline-none"
+            className="mt-1 w-full rounded-xl border border-border bg-cream/70 px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-mauve/60"
           />
         </label>
 
@@ -76,7 +76,7 @@ export default function WorkshopEnquiryForm() {
             name="email"
             value={values.email}
             onChange={(e) => update("email", e.target.value)}
-            className="mt-1 w-full rounded-xl border border-border bg-cream/70 px-3 py-2 text-sm outline-none"
+            className="mt-1 w-full rounded-xl border border-border bg-cream/70 px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-mauve/60"
           />
         </label>
 
@@ -86,7 +86,7 @@ export default function WorkshopEnquiryForm() {
             name="organisation"
             value={values.organisation}
             onChange={(e) => update("organisation", e.target.value)}
-            className="mt-1 w-full rounded-xl border border-border bg-cream/70 px-3 py-2 text-sm outline-none"
+            className="mt-1 w-full rounded-xl border border-border bg-cream/70 px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-mauve/60"
           />
         </label>
 
@@ -98,11 +98,15 @@ export default function WorkshopEnquiryForm() {
             value={values.details}
             onChange={(e) => update("details", e.target.value)}
             placeholder="Tell me about your goals, audience, or any specific requirements..."
-            className="mt-1 w-full rounded-xl border border-border bg-cream/70 px-3 py-2 text-sm outline-none"
+            className="mt-1 w-full rounded-xl border border-border bg-cream/70 px-3 py-2 text-sm outline-none focus-visible:ring-2 focus-visible:ring-mauve/60"
           />
         </label>
 
-        {error && <p className="text-sm text-rose-500">{error}</p>}
+        {error && (
+          <p role="alert" className="text-sm text-rose-500">
+            {error}
+          </p>
+        )}
 
         <button
           type="submit"

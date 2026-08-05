@@ -3,8 +3,9 @@ import { Reveal } from "@/components/site/Reveal";
 import { Sparkle, Users, Rainbow, Brain, HandHeart } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Populations — The Freudian Trip",
+  title: "Populations",
   description: "Inclusive, affirmative therapy for teenagers, adults, LGBTQIA+, neurodivergent and marginalised communities.",
+  alternates: { canonical: "/populations" },
   openGraph: {
     title: "Populations — The Freudian Trip",
     description: "An inclusive space for the communities I most love working with.",
@@ -21,7 +22,15 @@ const cards = [
 
 export default function PopulationsPage() {
   return (
-    <section className="px-6 py-24">
+    <section className="relative overflow-hidden px-6 py-24">
+      <img
+        src="/assets/petal-scatter.svg"
+        alt=""
+        aria-hidden="true"
+        width={200}
+        height={200}
+        className="pointer-events-none absolute -bottom-6 -right-4 hidden w-32 rotate-12 select-none opacity-30 md:block lg:w-40"
+      />
       <div className="mx-auto max-w-6xl">
         <Reveal>
           <p className="text-center script text-2xl text-mauve">held with care</p>
@@ -40,7 +49,7 @@ export default function PopulationsPage() {
                   <span className={`grid h-14 w-14 place-items-center rounded-full ${c.tint} text-mauve transition-transform group-hover:rotate-6`}>
                     <Icon className="h-6 w-6" strokeWidth={1.5} />
                   </span>
-                  <h3 className="mt-5 display text-2xl">{c.t}</h3>
+                  <h2 className="mt-5 display text-2xl">{c.t}</h2>
                   <p className="mt-3 text-sm text-foreground/70 leading-relaxed">{c.d}</p>
                 </article>
               </Reveal>

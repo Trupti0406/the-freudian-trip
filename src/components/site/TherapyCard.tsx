@@ -11,7 +11,7 @@ export function TherapyCard() {
       <span className="grid h-14 w-14 place-items-center rounded-full bg-rose/30 text-mauve">
         <HeartHandshake className="h-6 w-6" strokeWidth={1.5} />
       </span>
-      <span className="display text-2xl">Therapy</span>
+      <h2 className="display text-2xl">Therapy</h2>
       <span className="text-sm text-foreground/65">
         A confidential, empathetic space to explore and heal.
       </span>
