@@ -48,7 +48,7 @@ function Hero() {
                 className="w-full h-auto object-contain drop-shadow-sm"
               />
               <p className="mt-1 text-center text-md font-bold tracking-[0.28em] uppercase text-foreground/35">
-                ❀ By Prof. Rutuja
+                ❀ By Rutuja
               </p>
             </div>
           </Reveal>
